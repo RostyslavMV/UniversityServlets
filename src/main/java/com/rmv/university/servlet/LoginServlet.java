@@ -36,9 +36,8 @@ public class LoginServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     LoginRequest request = RequestUtil.getRequestObject(req, LoginRequest.class);
 
-    String authToken = authorizationService.authorize(request.getUsername(), request.getPassword());
-
-    TokenResponse response = new TokenResponse(authToken);
+    TokenResponse response =
+        authorizationService.authorize(request.getUsername(), request.getPassword());
 
     ResponseUtil.sendResponse(resp, response);
   }

@@ -13,7 +13,7 @@ public class StudentRepo {
   public Student save(User user) {
     Student student = new Student(user);
 
-    String command = "INSERT INTO students (name, surname, patronymic) VALUES (?, ?, ?)";
+    String command = "INSERT INTO students (first_name, surname, patronymic) VALUES (?, ?, ?)";
     try (Connection connection = ConnectionFactory.getConnection();
         PreparedStatement preparedStatement =
             connection.prepareStatement(command, Statement.RETURN_GENERATED_KEYS)) {

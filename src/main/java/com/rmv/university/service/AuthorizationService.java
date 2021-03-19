@@ -1,6 +1,7 @@
 package com.rmv.university.service;
 
 import com.rmv.university.entity.dao.User;
+import com.rmv.university.entity.response.TokenResponse;
 import com.rmv.university.util.ApplicationProperties;
 import com.rmv.university.util.AuthRole;
 import com.rmv.university.util.Encryptor;
@@ -21,30 +22,31 @@ public class AuthorizationService {
 
   private AuthorizationService() {}
 
-  public String authorize(String username, String password) {
+  public TokenResponse authorize(String username, String password) {
     User user = userService.getByUsername(username);
 
     if (!user.getPassword().equals(Encryptor.encode(password))) {
       throw new RuntimeException("Wrong credentials");
     }
 
-    return createJWT(user);
+    return new TokenResponse(
+        createJWT(user), user.getRole(), user.getFirstName(), user.getSurname());
   }
 
   public static String createJWT(User user) {
     long nowMillis = System.currentTimeMillis();
     Date now = new Date(nowMillis);
 
-    String authorities = "STUDENT";
+    String role = "STUDENT";
     if (!user.isStudent()) {
-      authorities = "LECTURER";
+      role = "LECTURER";
     }
 
     JwtBuilder builder =
         Jwts.builder()
             .setIssuedAt(now)
             .setSubject(user.getUsername())
-            .claim("authorities", authorities)
+            .claim("role", role)
             .claim("user_id", user.getId())
             .setExpiration(new Date(nowMillis + ttlMillis))
             .signWith(SignatureAlgorithm.HS256, signature);
@@ -58,12 +60,12 @@ public class AuthorizationService {
 
   public static AuthRole getRole(String token) {
     Jws<Claims> claimsJws = parseToken(token);
-    String authoritiesStr = claimsJws.getBody().get("authorities").toString();
+    String authoritiesStr = claimsJws.getBody().get("role").toString();
     return AuthRole.valueOf(authoritiesStr);
   }
 
-  public static Long getUserId(String token) {
+  public static Integer getUserId(String token) {
     Jws<Claims> claimsJws = parseToken(token);
-    return Long.parseLong(claimsJws.getBody().get("user_id").toString());
+    return Integer.parseInt(claimsJws.getBody().get("user_id").toString());
   }
 }

@@ -29,6 +29,24 @@ public class UserRepo {
     return Optional.empty();
   }
 
+  public Optional<User> findById(Integer id) {
+    String command = "SELECT * FROM users WHERE id=?";
+    try (Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(command)) {
+      preparedStatement.setInt(1, id);
+      ResultSet resultSet = preparedStatement.executeQuery();
+
+      if (!resultSet.next()) {
+        return Optional.empty();
+      }
+
+      return Optional.of(UserMapper.INSTANCE.resultSetToEntity(resultSet));
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw new RuntimeException(e);
+    }
+  }
+
   public User save(User user) {
     String command =
         "INSERT INTO users (username, password, student_id, lecturer_id) VALUES (?, ?, ?, ?)";
@@ -58,6 +76,41 @@ public class UserRepo {
       if (generatedKeys.next()) {
         user.setId(generatedKeys.getInt(1));
       }
+    } catch (SQLException throwables) {
+      throwables.printStackTrace();
+    }
+    return user;
+  }
+
+  public User getNames(User user) {
+    String command;
+    if (user.getStudentId() != null && user.getStudentId() != 0) {
+      user.setStudent(true);
+    }
+    if (user.isStudent()) {
+      command = "SELECT * FROM students WHERE id=?";
+    } else {
+      command = "SELECT * FROM lecturers WHERE id=?";
+    }
+    try (Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement preparedStatement =
+            connection.prepareStatement(command, Statement.RETURN_GENERATED_KEYS)) {
+
+      if (user.isStudent()) {
+        preparedStatement.setInt(1, user.getStudentId());
+      } else {
+        preparedStatement.setInt(1, user.getLecturerId());
+      }
+
+      ResultSet resultSet = preparedStatement.executeQuery();
+
+      if (!resultSet.next()) {
+        return user;
+      }
+
+      user.setSurname(resultSet.getString("surname"));
+      user.setFirstName(resultSet.getString("first_name"));
+      user.setPatronymic(resultSet.getString("patronymic"));
     } catch (SQLException throwables) {
       throwables.printStackTrace();
     }

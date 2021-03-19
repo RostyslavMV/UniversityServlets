@@ -18,4 +18,8 @@ public class User {
   private Integer lecturerId;
 
   private boolean isStudent;
+
+  public String getRole(){
+    return isStudent? "student" : "lecturer";
+  }
 }

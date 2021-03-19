@@ -810,7 +810,7 @@ false Zulu
     <database id="7" parent="1" name="university">
       <ObjectId>16438</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>26911</IntrospectionStateNumber>
+      <IntrospectionStateNumber>26959</IntrospectionStateNumber>
       <Current>1</Current>
       <Relations>sequence|table|16510|16512|1
 sequence|table|16518|16520|1
@@ -891,7 +891,7 @@ UC/10
 </Acl>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>26912</IntrospectionStateNumber>
+      <IntrospectionStateNumber>26960</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="23" parent="7" name="plpgsql">
@@ -1169,11 +1169,11 @@ course_id</ColNames>
       <StateNumber>660</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="60" parent="41" name="name">
+    <column id="60" parent="41" name="first_name">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>660</StateNumber>
+      <StateNumber>26955</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="61" parent="41" name="patronymic">
@@ -1215,11 +1215,11 @@ course_id</ColNames>
       <StateNumber>659</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="66" parent="42" name="name">
+    <column id="66" parent="42" name="first_name">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>659</StateNumber>
+      <StateNumber>26958</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="67" parent="42" name="patronymic">

@@ -9,4 +9,6 @@ public class Course {
 
     private String name;
     private Integer lecturerId;
+
+    private Lecturer lecturer;
 }

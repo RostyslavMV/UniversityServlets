@@ -27,4 +27,6 @@ public class UserServlet extends HttpServlet {
     UserResponse userResponse = UserMapper.INSTANCE.toUserResponse(user);
     ResponseUtil.sendResponse(resp, userResponse);
   }
+
+
 }

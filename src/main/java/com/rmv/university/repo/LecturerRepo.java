@@ -12,7 +12,7 @@ public class LecturerRepo {
   public Lecturer save(User user) {
     Lecturer lecturer = new Lecturer(user);
 
-    String command = "INSERT INTO lecturers (name, surname, patronymic) VALUES (?, ?, ?)";
+    String command = "INSERT INTO lecturers (first_name, surname, patronymic) VALUES (?, ?, ?)";
     try (Connection connection = ConnectionFactory.getConnection();
         PreparedStatement preparedStatement =
             connection.prepareStatement(command, Statement.RETURN_GENERATED_KEYS)) {

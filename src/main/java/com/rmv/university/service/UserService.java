@@ -31,9 +31,14 @@ public class UserService {
   }
 
   public User getByUsername(String username) {
-    return findByUsername(username)
-        .orElseThrow(
-            () -> new RuntimeException(String.format("Can't find user by username=%s", username)));
+    User user =
+        findByUsername(username)
+            .orElseThrow(
+                () ->
+                    new RuntimeException(
+                        String.format("Can't find user by username=%s", username)));
+    userRepo.getNames(user);
+    return user;
   }
 
   public User create(UserCreateRequest request) {
