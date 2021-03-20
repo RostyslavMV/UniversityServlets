@@ -1,7 +1,7 @@
 package com.rmv.university.repo;
 
 import com.rmv.university.db.ConnectionFactory;
-import com.rmv.university.entity.dao.Course;
+import com.rmv.university.entity.Course;
 import com.rmv.university.mappers.CourseMapper;
 
 import java.sql.*;
@@ -24,7 +24,7 @@ public class CourseRepo {
         return Optional.empty();
       }
 
-      return Optional.of(CourseMapper.INSTANCE.resultSetToEntity(resultSet));
+      return Optional.of(CourseMapper.INSTANCE.resultSetToEntityWithLecturerName(resultSet));
     } catch (SQLException e) {
       e.printStackTrace();
       throw new RuntimeException(e);
@@ -38,6 +38,23 @@ public class CourseRepo {
         PreparedStatement preparedStatement = connection.prepareStatement(command)) {
       ResultSet resultSet = preparedStatement.executeQuery();
 
+      while (resultSet.next()) {
+        courses.add(CourseMapper.INSTANCE.resultSetToEntityWithLecturerName(resultSet));
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw new RuntimeException(e);
+    }
+    return courses;
+  }
+
+  public List<Course> findAllCoursesForLecturer(Integer lecturerId) {
+    List<Course> courses = new ArrayList<>();
+    String command = "SELECT * FROM courses WHERE lecturer_id=?";
+    try (Connection connection = ConnectionFactory.getConnection();
+         PreparedStatement preparedStatement = connection.prepareStatement(command)) {
+      preparedStatement.setInt(1, lecturerId);
+      ResultSet resultSet = preparedStatement.executeQuery();
       while (resultSet.next()) {
         courses.add(CourseMapper.INSTANCE.resultSetToEntity(resultSet));
       }

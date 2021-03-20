@@ -1,6 +1,6 @@
 package com.rmv.university.servlet;
 
-import com.rmv.university.entity.dao.User;
+import com.rmv.university.entity.User;
 import com.rmv.university.entity.request.UserCreateRequest;
 import com.rmv.university.entity.response.UserResponse;
 import com.rmv.university.mappers.UserMapper;

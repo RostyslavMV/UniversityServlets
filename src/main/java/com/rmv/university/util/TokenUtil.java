@@ -1,6 +1,6 @@
 package com.rmv.university.util;
 
-import com.rmv.university.entity.dao.User;
+import com.rmv.university.entity.User;
 import com.rmv.university.repo.UserRepo;
 import com.rmv.university.service.AuthorizationService;
 

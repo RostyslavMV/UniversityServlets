@@ -1,6 +1,6 @@
 package com.rmv.university.mappers;
 
-import com.rmv.university.entity.dao.User;
+import com.rmv.university.entity.User;
 import com.rmv.university.entity.response.UserResponse;
 
 import java.sql.ResultSet;

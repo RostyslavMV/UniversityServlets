@@ -1,8 +1,8 @@
 package com.rmv.university.service;
 
-import com.rmv.university.entity.dao.Course;
-import com.rmv.university.entity.dao.Enrollment;
-import com.rmv.university.entity.dao.User;
+import com.rmv.university.entity.Course;
+import com.rmv.university.entity.Enrollment;
+import com.rmv.university.entity.User;
 import com.rmv.university.entity.request.CourseRequest;
 import com.rmv.university.entity.request.StudentCourseRequest;
 import com.rmv.university.entity.response.CourseResponse;

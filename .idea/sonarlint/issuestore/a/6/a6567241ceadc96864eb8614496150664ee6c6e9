@@ -1,0 +1,17 @@
+
+K
+java:S1444".Make this "public static INSTANCE" field final(ãßÁ’8¼¾´¶„/
+Z
+java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8øÄ¸¶„/
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ş¿ê8¼¾´¶„/
+q
+java:S1104"TMake INSTANCE a static final constant or non-public and provide accessors if needed.(ãßÁ’8¼¾´¶„/
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¦êäªùÿÿÿÿ8¼¾´¶„/
+p
+java:S3008"SRename this field "INSTANCE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãßÁ’8¼¾´¶„/
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(€†ÿïúÿÿÿÿ8¼¾´¶„/
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ğ‡¸¶„/
+O
+java:S1128
+"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8ğ‡¸¶„/

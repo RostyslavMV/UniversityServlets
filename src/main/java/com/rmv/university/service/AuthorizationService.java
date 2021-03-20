@@ -1,16 +1,13 @@
 package com.rmv.university.service;
 
-import com.rmv.university.entity.dao.User;
+import com.rmv.university.entity.User;
 import com.rmv.university.entity.response.TokenResponse;
 import com.rmv.university.util.ApplicationProperties;
 import com.rmv.university.util.AuthRole;
 import com.rmv.university.util.Encryptor;
 import io.jsonwebtoken.*;
 
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class AuthorizationService {
   public static AuthorizationService INSTANCE = new AuthorizationService();

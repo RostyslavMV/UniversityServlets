@@ -1,6 +1,6 @@
 package com.rmv.university.servlet;
 
-import com.rmv.university.entity.dao.Course;
+import com.rmv.university.entity.Course;
 import com.rmv.university.entity.request.CourseRequest;
 import com.rmv.university.service.CourseService;
 import com.rmv.university.util.RequestUtil;

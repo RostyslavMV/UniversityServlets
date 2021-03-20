@@ -1,7 +1,7 @@
 package com.rmv.university.service;
 
 import com.rmv.university.db.ConnectionFactory;
-import com.rmv.university.entity.dao.User;
+import com.rmv.university.entity.User;
 import com.rmv.university.entity.request.UserCreateRequest;
 import com.rmv.university.repo.LecturerRepo;
 import com.rmv.university.repo.StudentRepo;
@@ -19,12 +19,6 @@ public class UserService {
   private final StudentRepo studentRepo = StudentRepo.INSTANCE;
 
   private UserService() {}
-
-  //    public User getById(Long id) {
-  //        return userRepo.findById(id)
-  //                .orElseThrow(() -> new RuntimeException(String.format("Can't find user by
-  // id=%d", id)));
-  //    }
 
   public Optional<User> findByUsername(String username) {
     return userRepo.findByUsername(username);

@@ -1,7 +1,7 @@
 package com.rmv.university.repo;
 
 import com.rmv.university.db.ConnectionFactory;
-import com.rmv.university.entity.dao.User;
+import com.rmv.university.entity.User;
 import com.rmv.university.mappers.UserMapper;
 
 import java.sql.*;

@@ -1,6 +1,6 @@
 package com.rmv.university.mappers;
 
-import com.rmv.university.entity.dao.Enrollment;
+import com.rmv.university.entity.Enrollment;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

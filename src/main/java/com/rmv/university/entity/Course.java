@@ -1,4 +1,4 @@
-package com.rmv.university.entity.dao;
+package com.rmv.university.entity;
 
 import lombok.Data;
 

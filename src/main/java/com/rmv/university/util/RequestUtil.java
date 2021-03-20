@@ -1,7 +1,6 @@
 package com.rmv.university.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rmv.university.entity.dao.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
